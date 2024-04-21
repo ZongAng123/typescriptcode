@@ -1,0 +1,66 @@
+/*
+* 自动编译整个项目
+- 如果直接使用tsc指令，则可以自动将当前项目下的所有ts文件编译为js文件。
+- 但是能直接使用tsc命令的前提时，要先在项目根目录下创建一个ts的配置文件tsconfig.json
+- tsconfig.json是一个JSON文件，添加配置文件后，只需要tsc命令即可完成对整个项目的编译
+tsconfig.json是TS编译器的配置文件,ts编译器可以根据它的信息来对代码进行编译
+*/
+/*
+"include"用来指定哪些ts文件需要被编译
+路径：** 表示任意目录  *表示任意文件
+
+*/
+{
+  "include": [
+    "./src/**/*"
+  ],
+/*
+"exclude" 不需要被编译的文件目录
+   默认值：["node_modules","bower_components","jspm_packages"]
+*/
+//  "exclude": [
+//    "./src/hello/**/*"
+//  ],
+//  "extends": "./configs/base",//定义被继承的配置文件
+/*
+ "compilerOptions"编译器的选项[编译选项是配置文件中非常重要也是比较复杂的配置选项]
+*/
+  "compilerOptions": {
+    //target 用来指定ts被编译为的ES的版本
+//    'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.
+    "target": "es2015",
+//  module 指定要使用的模块化的规范
+//     'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'es2020', 'es2022', 'esnext', 'node16', 'nodenext', 'preserve'
+    "module": "system",
+//    lib用来指定项目中要使用的库
+//    "lib": ["dom"],//一般情况下不需要改
+
+//    outDir用来指定编译后文件所在目录
+    "outDir": "./dist",
+
+//    outFile将代码合并为一个文件
+//    设置outFile后，左右全局作用域中的代码会合并到同一个文件中
+//    "outFile": "./dist/app.js",
+
+//    allowJs是否对js文件进行编译
+    "allowJs": true,
+//    是否检查js代码是否符合规范
+    "checkJs": true,
+//    是否移除注释
+    "removeComments": true,
+//   不生成编译后的文件
+    "noEmit": false,
+//    当有错误时不生成编译后的文件
+    "noEmitOnError": false,
+    //    所有严格检查的总开关
+    "strict": false,
+//  用来设置编译后的文件是否使用严格模式
+    "alwaysStrict": true,
+//   不允许隐式any类型
+    "noImplicitAny": false,
+//   不允许不明确类型的this
+    "noImplicitThis": false,
+//    严格的检查空值
+    "strictNullChecks": false
+  }
+}
